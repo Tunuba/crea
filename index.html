@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Crea con IA</title>
-<meta name="description" content="Pídale a la IA una página web y véala funcionar al instante.">
+<title>Crea su página</title>
+<meta name="description" content="Pídale a su IA los tres archivos de una página web, péguelos y véala funcionar.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23ff3d7f'/%3E%3Ccircle cx='11' cy='11' r='4' fill='white' opacity='.7'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
@@ -19,225 +19,226 @@
   :root[data-theme="dark"] { --fondo: #140f22; --tarjeta: #1f1833; --texto: #f4eefe; --suave: #b6a8cc; --borde: #3a2f55; }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--fondo); color: var(--texto); font: 17px/1.5 Nunito, "Segoe UI", system-ui, sans-serif; }
-  .ancho { max-width: 980px; margin: 0 auto; padding: 0 16px; }
-  header { background: linear-gradient(120deg, var(--morado), var(--rosa) 55%, var(--naranja)); color: #fff; padding: 26px 0 30px; position: relative; overflow: hidden; }
-  header h1 { font: 800 clamp(34px, 7vw, 56px)/1.05 "Baloo 2", Nunito, sans-serif; margin: 0; }
-  header p { margin: 6px 0 0; font-size: clamp(16px, 2.6vw, 20px); max-width: 620px; opacity: .95; }
+  .ancho { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+  header { background: linear-gradient(120deg, var(--morado), var(--rosa) 55%, var(--naranja)); color: #fff; padding: 24px 0 28px; position: relative; overflow: hidden; }
+  header h1 { font: 800 clamp(32px, 6.5vw, 54px)/1.05 "Baloo 2", Nunito, sans-serif; margin: 0; }
+  header p { margin: 6px 0 0; font-size: clamp(16px, 2.4vw, 20px); max-width: 700px; opacity: .95; }
   .burbuja { position: absolute; border-radius: 50%; background: rgba(255,255,255,.18); animation: flotar 9s ease-in-out infinite; }
   @keyframes flotar { 50% { transform: translateY(-18px) scale(1.06); } }
 
   .tarjeta { background: var(--tarjeta); border: 2px solid var(--borde); border-radius: 22px; padding: 18px; margin: 18px 0; }
   h2 { font: 800 24px/1.2 "Baloo 2", Nunito, sans-serif; margin: 0 0 10px; display: flex; gap: 10px; align-items: center; }
   h2 .n { width: 34px; height: 34px; border-radius: 50%; display: inline-grid; place-items: center; color: #fff; font-size: 18px; flex: none; }
-  textarea, input { font: inherit; width: 100%; border: 2px solid var(--borde); border-radius: 14px; padding: 12px 14px; background: var(--fondo); color: var(--texto); }
-  textarea:focus, input:focus { outline: 3px solid var(--azul); border-color: transparent; }
+  .suave-txt { color: var(--suave); margin: 0 0 10px; }
+  input, textarea { font: inherit; width: 100%; border: 2px solid var(--borde); border-radius: 14px; padding: 12px 14px; background: var(--fondo); color: var(--texto); }
+  input:focus, textarea:focus { outline: 3px solid var(--azul); border-color: transparent; }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 4px; }
   .chip { border: none; border-radius: 30px; padding: 8px 14px; font: 700 15px Nunito, sans-serif; cursor: pointer; color: #24183a; }
-  .boton { border: none; border-radius: 16px; padding: 14px 26px; font: 800 19px "Baloo 2", Nunito, sans-serif; cursor: pointer; color: #fff;
-           background: linear-gradient(120deg, var(--rosa), var(--naranja)); box-shadow: 0 6px 0 #c22a5e; transition: transform .1s; }
-  .boton:active { transform: translateY(4px); box-shadow: 0 2px 0 #c22a5e; }
-  .boton:disabled { opacity: .6; cursor: wait; }
-  .boton.verde { background: var(--verde); box-shadow: 0 6px 0 #0b7a59; }
-  .boton.azul { background: var(--azul); box-shadow: 0 6px 0 #2236b8; }
-  .suave { border: 2px solid var(--borde); background: var(--tarjeta); color: var(--texto); border-radius: 14px; padding: 10px 16px; font: 700 16px Nunito, sans-serif; cursor: pointer; }
+  .instruccion { background: var(--fondo); border: 2px dashed var(--borde); border-radius: 14px; padding: 12px 14px; font-size: 15px; white-space: pre-wrap; margin-top: 10px; }
+  .boton { border: none; border-radius: 16px; padding: 12px 22px; font: 800 18px "Baloo 2", Nunito, sans-serif; cursor: pointer; color: #fff; text-decoration: none; display: inline-block;
+           background: linear-gradient(120deg, var(--rosa), var(--naranja)); box-shadow: 0 5px 0 #c22a5e; transition: transform .1s; }
+  .boton:active { transform: translateY(4px); box-shadow: 0 1px 0 #c22a5e; }
+  .boton.verde { background: var(--verde); box-shadow: 0 5px 0 #0b7a59; }
+  .boton.azul { background: var(--azul); box-shadow: 0 5px 0 #2236b8; }
+  .boton.morado { background: var(--morado); box-shadow: 0 5px 0 #5a1fb0; }
+  .suave { border: 2px solid var(--borde); background: var(--tarjeta); color: var(--texto); border-radius: 14px; padding: 9px 16px; font: 700 16px Nunito, sans-serif; cursor: pointer; }
   .fila { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 12px; }
   .estado { color: var(--suave); font-weight: 700; }
-  .estado.mal { color: var(--rosa); }
-  .marco { border-radius: 18px; overflow: hidden; border: 3px solid var(--borde); background: #fff; height: min(70vh, 560px); }
+
+  /* el editor: tres archivos y el resultado */
+  .editor { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+  .pestanas { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pestana { border: none; border-radius: 14px 14px 0 0; padding: 10px 16px; font: 800 17px "Baloo 2", Nunito, sans-serif; color: #fff; cursor: pointer; opacity: .5; }
+  .pestana.activa { opacity: 1; }
+  .pestana small { display: block; font: 700 12px Nunito, sans-serif; opacity: .95; }
+  .archivo { display: none; }
+  .archivo.activa { display: block; }
+  .archivo textarea { font: 14px/1.5 Consolas, "Cascadia Mono", monospace; height: min(56vh, 460px); white-space: pre; tab-size: 2; border-radius: 0 14px 14px 14px; border-width: 3px; resize: vertical; }
+  .marco { border-radius: 18px; overflow: hidden; border: 3px solid var(--borde); background: #fff; height: min(60vh, 520px); }
   .marco iframe { width: 100%; height: 100%; border: 0; display: block; background: #fff; }
-  #codigo { font: 14px/1.45 Consolas, "Cascadia Mono", monospace; height: 320px; white-space: pre; tab-size: 2; }
+  .rotulo { font: 800 17px "Baloo 2", Nunito, sans-serif; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .vivo { font: 700 13px Nunito; color: var(--verde); }
   .ejemplos { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
-  .ejemplo { border: none; border-radius: 16px; padding: 16px 12px; font: 800 17px "Baloo 2", Nunito, sans-serif; color: #fff; cursor: pointer; min-height: 76px; }
-  .tres { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 6px 0 10px; }
-  .tres div { border-radius: 16px; padding: 12px; color: #fff; }
-  .tres b { display: block; font: 800 20px "Baloo 2", Nunito, sans-serif; }
-  .tres span { font-size: 14px; opacity: .95; }
-  details summary { cursor: pointer; font-weight: 700; }
+  .ejemplo { border: none; border-radius: 16px; padding: 14px 12px; font: 800 17px "Baloo 2", Nunito, sans-serif; color: #fff; cursor: pointer; min-height: 64px; }
   footer { color: var(--suave); font-size: 14px; padding: 6px 0 30px; }
-  .cargando { display: inline-block; width: 18px; height: 18px; border-radius: 50%; border: 3px solid var(--borde); border-top-color: var(--rosa); animation: girar .8s linear infinite; vertical-align: -3px; margin-right: 6px; }
-  @keyframes girar { to { transform: rotate(360deg); } }
-  @media (max-width: 640px) { .tres { grid-template-columns: 1fr; } .boton { width: 100%; } }
+  @media (max-width: 860px) { .editor { grid-template-columns: 1fr; } .boton { width: 100%; text-align: center; } }
 </style>
 </head>
 <body>
 <header>
   <span class="burbuja" style="width:180px;height:180px;right:-40px;top:-50px"></span>
-  <span class="burbuja" style="width:90px;height:90px;right:140px;bottom:-30px;animation-delay:-3s"></span>
+  <span class="burbuja" style="width:90px;height:90px;right:150px;bottom:-30px;animation-delay:-3s"></span>
   <div class="ancho">
-    <h1>Crea con IA</h1>
-    <p>Diga qué página quiere, la IA escribe el código y usted la ve funcionar al instante.</p>
+    <h1>Crea su página</h1>
+    <p>Una página web son tres archivos. Pídaselos a su IA, péguelos aquí y véala funcionar al instante.</p>
   </div>
 </header>
 
 <main class="ancho">
   <section class="tarjeta">
-    <h2><span class="n" style="background:var(--rosa)">1</span> ¿Qué quiere crear?</h2>
-    <textarea id="pedido" rows="3" placeholder="Por ejemplo, una pelota que rebota y cambia de color"></textarea>
+    <h2><span class="n" style="background:var(--rosa)">1</span> Pídale a su IA los tres archivos</h2>
+    <p class="suave-txt">Escriba o toque una idea, copie la instrucción y péguela en ChatGPT, Gemini o Meta AI de WhatsApp.</p>
+    <input id="pedido" placeholder="Por ejemplo, una pelota que rebota y cambia de color">
     <div class="chips" id="chips"></div>
+    <div class="instruccion" id="instruccion"></div>
     <div class="fila">
-      <button class="boton" id="crear">Crear con IA</button>
-      <span class="estado" id="estado"></span>
+      <button class="boton" id="copiar">Copiar instrucción</button>
+      <a class="suave" href="https://chatgpt.com/" target="_blank" rel="noopener">Abrir ChatGPT</a>
+      <a class="suave" href="https://gemini.google.com/" target="_blank" rel="noopener">Abrir Gemini</a>
+      <span class="estado" id="copiado"></span>
     </div>
   </section>
 
-  <section class="tarjeta" id="caja-resultado" hidden>
-    <h2><span class="n" style="background:var(--verde)">2</span> Su página</h2>
-    <div class="marco"><iframe id="vista" sandbox="allow-scripts allow-modals" title="Su página"></iframe></div>
-    <div class="fila">
-      <input id="cambio" placeholder="Pida un cambio, por ejemplo que sea azul y más rápida">
-      <button class="boton azul" id="cambiar">Cambiar</button>
-    </div>
-    <div class="fila">
-      <button class="suave" id="grande">Pantalla completa</button>
-      <button class="suave" id="ver-codigo">Ver el código</button>
-      <button class="suave" id="bajar">Descargar</button>
-    </div>
-    <div id="caja-codigo" hidden>
-      <div class="tres">
-        <div style="background:var(--naranja)"><b>HTML</b><span>Lo que hay en la página, los textos y botones</span></div>
-        <div style="background:var(--azul)"><b>CSS</b><span>Cómo se ve, colores, tamaños y lugares</span></div>
-        <div style="background:var(--morado)"><b>JavaScript</b><span>Lo que hace, moverse, contar y responder</span></div>
+  <section class="tarjeta">
+    <h2><span class="n" style="background:var(--verde)">2</span> Pegue cada código en su archivo</h2>
+    <p class="suave-txt">Si pega toda la respuesta de la IA en cualquier caja, los códigos se acomodan solos en su archivo.</p>
+    <div class="editor">
+      <div>
+        <div class="pestanas">
+          <button class="pestana activa" data-archivo="html" style="background:var(--naranja)">clase.html<small>Lo que hay</small></button>
+          <button class="pestana" data-archivo="css" style="background:var(--azul)">clase.css<small>Cómo se ve</small></button>
+          <button class="pestana" data-archivo="js" style="background:var(--morado)">clase.js<small>Lo que hace</small></button>
+        </div>
+        <div class="archivo activa" id="a-html"><textarea id="html" spellcheck="false" style="border-color:var(--naranja)" aria-label="clase.html"></textarea></div>
+        <div class="archivo" id="a-css"><textarea id="css" spellcheck="false" style="border-color:var(--azul)" aria-label="clase.css"></textarea></div>
+        <div class="archivo" id="a-js"><textarea id="js" spellcheck="false" style="border-color:var(--morado)" aria-label="clase.js"></textarea></div>
       </div>
-      <textarea id="codigo" spellcheck="false"></textarea>
-      <div class="fila"><button class="boton verde" id="probar">Probar mis cambios</button><span class="estado">Cambie un color o un número y pruebe.</span></div>
+      <div>
+        <div class="rotulo">Su página <span class="vivo" id="vivo">Se actualiza sola mientras escribe</span></div>
+        <div class="marco"><iframe id="vista" sandbox="allow-scripts allow-modals" title="Su página"></iframe></div>
+        <div class="fila">
+          <button class="boton verde" id="ver">Ver resultado</button>
+          <button class="suave" id="grande">Pantalla completa</button>
+          <button class="suave" id="bajar">Descargar</button>
+          <button class="suave" id="limpiar">Empezar de cero</button>
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="tarjeta">
-    <h2><span class="n" style="background:var(--azul)">3</span> Ejemplos listos</h2>
-    <p class="estado" style="margin-top:0">Funcionan al instante, aunque la IA esté ocupada. Ábralos y cámbieles los colores.</p>
+    <h2><span class="n" style="background:var(--azul)">3</span> Ejemplos para empezar</h2>
+    <p class="suave-txt">Ábralos, cambie un color o un número en clase.css o clase.js, y mire qué pasa.</p>
     <div class="ejemplos" id="ejemplos"></div>
-  </section>
-
-  <section class="tarjeta">
-    <details>
-      <summary>¿La IA está ocupada? Use la suya, ChatGPT, Gemini o Meta AI</summary>
-      <p>La IA gratis de esta página contesta una vez cada 30 segundos por red, así que con mucha gente en el mismo Wi-Fi hay que esperar. Con su propia IA no hay fila.</p>
-      <ol>
-        <li>Escriba arriba lo que quiere crear y toque Copiar instrucción.</li>
-        <li>Péguela en ChatGPT, Gemini o Meta AI de WhatsApp.</li>
-        <li>Copie el código que le devuelva, péguelo abajo y toque Ver mi página.</li>
-      </ol>
-      <div class="fila"><button class="suave" id="copiar">Copiar instrucción</button><span class="estado" id="copiado"></span></div>
-      <textarea id="pegado" rows="5" placeholder="Pegue aquí el código que le dio la IA" style="margin-top:10px"></textarea>
-      <div class="fila"><button class="boton verde" id="ver-pegado">Ver mi página</button></div>
-    </details>
   </section>
 </main>
 
 <footer class="ancho">
-  <p>Todo lo que usted crea se queda en su teléfono. Una página web son tres cosas, HTML, CSS y JavaScript, y ahora usted ya hizo una.</p>
+  <p>Todo se queda en su teléfono. HTML dice qué hay, CSS cómo se ve y JavaScript qué hace. Con esas tres cosas se hace cualquier página.</p>
 </footer>
 
 <script src="ejemplos.js"></script>
 <script>
 const $ = id => document.getElementById(id);
-const IA = 'https://text.pollinations.ai/openai';
 const COLORES = ['#ffd23d', '#ff9a3d', '#7cf5c4', '#9fb4ff', '#ffb0cb', '#d6b4ff'];
 const FONDOS = ['#ff3d7f', '#ff9a3d', '#12b886', '#3d5afe', '#8b3dff'];
 const IDEAS = ['Una pelota que rebota', 'Una ruleta para escoger alumno', 'Un reloj para la clase', 'Un juego de sumas',
   'Fuegos artificiales al tocar', 'Una tarjeta de cumpleaños animada', 'Un semáforo que cambia solo', 'Un dado para lanzar'];
-let actual = '', pedidoActual = '';
+const CLAVE = 'crea-su-pagina.v1';
 
-const REGLAS = 'Usted crea páginas web pequeñas para maestros que están aprendiendo. Devuelva SOLO un archivo HTML completo ' +
-  '(con <style> y <script> adentro), sin explicaciones, sin bibliotecas ni imágenes de internet. Que funcione en teléfono y ' +
-  'computadora, con colores alegres, letras grandes y textos en español. Máximo 100 líneas, con comentarios cortos en español ' +
-  'que digan qué parte es HTML, CSS y JavaScript.';
-
-function instruccion(pedido, anterior) {
-  return anterior
-    ? `${REGLAS}\n\nEste es el código actual\n${anterior}\n\nHaga este cambio y devuelva el archivo completo. ${pedido}`
-    : `${REGLAS}\n\nCree esto. ${pedido}`;
+function instruccion() {
+  const p = $('pedido').value.trim() || 'una pelota que rebota y cambia de color';
+  return `Hazme una página web de esto, ${p.charAt(0).toLowerCase() + p.slice(1)}.\n` +
+    'Dame tres códigos separados, uno para clase.html, otro para clase.css y otro para clase.js. ' +
+    'En clase.html enlaza clase.css y clase.js. Que funcione en teléfono, con colores alegres, letras grandes y textos en español, ' +
+    'sin imágenes ni bibliotecas de internet, y con comentarios cortos que expliquen cada parte.';
 }
 
-// Saca el HTML de la respuesta, venga o no dentro de un bloque de codigo
-function sacarHtml(t) {
-  t = String(t || '');
-  const bloque = t.match(/```(?:html)?\s*([\s\S]*?)```/i);
-  if (bloque) t = bloque[1];
-  const a = t.search(/<!doctype html|<html/i);
-  if (a >= 0) t = t.slice(a);
-  const b = t.toLowerCase().lastIndexOf('</html>');
-  if (b >= 0) t = t.slice(0, b + 7);
-  if (!/<(body|div|canvas|script|h1|button)/i.test(t)) throw new Error('La IA no devolvió una página. Pruebe otra vez con otras palabras.');
-  if (b < 0) t += '\n<' + '/script></body></html>';   // si salio cortada, se cierra para que al menos se vea (partido para no cerrar este script)
-  return t.trim();
+// Junta los tres archivos en una sola pagina para el visor
+function juntar() {
+  let html = $('html').value, css = $('css').value, js = $('js').value;
+  html = html.replace(/<link[^>]*href=["']?[^"'>]*\.css["']?[^>]*>/gi, '')
+             .replace(/<script[^>]*src=["']?[^"'>]*\.js["']?[^>]*>\s*<\/script>/gi, '');
+  if (!/<html/i.test(html)) html = `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head><body>${html}</body></html>`;
+  const estilo = `<style>${css}</style>`, guion = '<script>' + js.replace(/<\/script/gi, '<\\/script') + '<' + '/script>';
+  html = /<\/head>/i.test(html) ? html.replace(/<\/head>/i, estilo + '</head>') : estilo + html;
+  html = /<\/body>/i.test(html) ? html.replace(/<\/body>(?![\s\S]*<\/body>)/i, guion + '</body>') : html + guion;
+  return html;
 }
 
-function mostrar(html, pedido) {
-  actual = html; pedidoActual = pedido || pedidoActual;
-  $('vista').srcdoc = html;
-  $('codigo').value = html;
-  $('caja-resultado').hidden = false;
+let espera = null;
+function ver() {
+  $('vista').srcdoc = juntar();
+  try { localStorage.setItem(CLAVE, JSON.stringify({ html: $('html').value, css: $('css').value, js: $('js').value, pedido: $('pedido').value })); } catch (e) {}
+}
+function verPronto() { clearTimeout(espera); espera = setTimeout(ver, 700); }
+
+// Si pegan la respuesta completa de la IA, cada bloque de codigo va a su archivo
+function repartir(texto) {
+  const bloques = [...texto.matchAll(/```\s*([a-zA-Z]*)[^\n]*\n([\s\S]*?)```/g)];
+  if (bloques.length < 2) return false;
+  for (const [, tipo, codigo] of bloques) {
+    const t = tipo.toLowerCase();
+    const destino = /html|xml/.test(t) || /<html|<body|<div/i.test(codigo) && !/^(css|js|javascript)$/.test(t) ? 'html'
+      : t === 'css' || (!t && /[.#]?[\w-]+\s*\{[^}]*:/.test(codigo) && !/function|=>|document\./.test(codigo)) ? 'css' : 'js';
+    $(destino).value = codigo.trim();
+  }
+  return true;
 }
 
-function estado(texto, mal) { $('estado').innerHTML = texto; $('estado').className = 'estado' + (mal ? ' mal' : ''); }
-
-async function pedirIA(texto, boton) {
-  boton.disabled = true;
-  try {
-    for (let intento = 0; intento < 12; intento++) {
-      estado('<span class="cargando"></span>La IA está escribiendo su página, unos 20 segundos');
-      let r;
-      try {
-        r = await fetch(IA, { method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ model: 'openai-fast', messages: [{ role: 'user', content: texto }] }) });
-      } catch (e) { throw new Error('No hay conexión con la IA. Revise el internet o use un ejemplo listo.'); }
-      if (r.status === 402 || r.status === 429) {          // fila de la IA gratis
-        const t = await r.text();
-        let seg = +((t.match(/after (\d+)s/i) || [])[1] || 15) + 1;
-        while (seg > 0) { estado(`<span class="cargando"></span>Hay fila en la IA gratis, le toca en ${seg} segundos`); await new Promise(ok => setTimeout(ok, 1000)); seg--; }
-        continue;
-      }
-      if (!r.ok) throw new Error(`La IA contestó con error ${r.status}. Pruebe en un momento.`);
-      const j = await r.json();
-      return sacarHtml(j.choices[0].message.content);
-    }
-    throw new Error('La IA está muy ocupada. Use un ejemplo listo o su propia IA, abajo.');
-  } finally { boton.disabled = false; }
+// Los ejemplos vienen en un solo archivo, se parten en los tres
+function partir(html) {
+  const css = (html.match(/<style>([\s\S]*?)<\/style>/i) || [, ''])[1];
+  const js = (html.match(/<script>([\s\S]*?)<\/script>/i) || [, ''])[1];
+  let solo = html.replace(/\s*<style>[\s\S]*?<\/style>/i, '\n<link rel="stylesheet" href="clase.css">')
+                 .replace(/<script>[\s\S]*?<\/script>/i, '<script src="clase.js"><' + '/script>');
+  const quitar = s => s.replace(/^\n+|\s+$/g, '').split('\n').map(l => l.replace(/^  /, '')).join('\n');
+  return { html: solo.trim(), css: quitar(css), js: quitar(js) };
 }
 
-$('crear').onclick = async () => {
-  const p = $('pedido').value.trim();
-  if (!p) { estado('Escriba qué quiere crear o toque una idea.', true); return; }
-  try { mostrar(await pedirIA(instruccion(p), $('crear')), p); estado('Listo, mire su página abajo.'); $('caja-resultado').scrollIntoView({ behavior: 'smooth' }); }
-  catch (e) { estado(e.message, true); }
+function abrirEjemplo(i) {
+  const x = partir(EJEMPLOS[i].html);
+  $('html').value = x.html; $('css').value = x.css; $('js').value = x.js;
+  $('pedido').value = EJEMPLOS[i].pedido;
+  $('instruccion').textContent = instruccion();
+  ver();
+}
+
+document.querySelectorAll('.pestana').forEach(b => b.onclick = () => {
+  document.querySelectorAll('.pestana').forEach(x => x.classList.toggle('activa', x === b));
+  document.querySelectorAll('.archivo').forEach(a => a.classList.toggle('activa', a.id === 'a-' + b.dataset.archivo));
+});
+for (const id of ['html', 'css', 'js']) {
+  $(id).addEventListener('input', verPronto);
+  $(id).addEventListener('paste', e => {
+    const t = (e.clipboardData || window.clipboardData).getData('text');
+    if (repartir(t)) { e.preventDefault(); ver(); $('vivo').textContent = 'Los códigos se acomodaron en sus tres archivos'; }
+  });
+}
+$('pedido').addEventListener('input', () => { $('instruccion').textContent = instruccion(); });
+$('copiar').onclick = async () => {
+  try { await navigator.clipboard.writeText(instruccion()); $('copiado').textContent = 'Copiada, péguela en su IA'; }
+  catch (e) {
+    const r = document.createRange(); r.selectNodeContents($('instruccion'));
+    getSelection().removeAllRanges(); getSelection().addRange(r);
+    $('copiado').textContent = 'Quedó marcada, cópiela';
+  }
 };
-$('cambiar').onclick = async () => {
-  const c = $('cambio').value.trim();
-  if (!c || !actual) return;
-  try { mostrar(await pedirIA(instruccion(c, actual), $('cambiar'))); $('cambio').value = ''; estado('Cambio listo.'); }
-  catch (e) { estado(e.message, true); }
-};
-$('probar').onclick = () => mostrar($('codigo').value);
-$('ver-codigo').onclick = () => { $('caja-codigo').hidden = !$('caja-codigo').hidden; };
+$('ver').onclick = ver;
 $('grande').onclick = () => { const f = $('vista'); (f.requestFullscreen || f.webkitRequestFullscreen || (() => {})).call(f); };
 $('bajar').onclick = () => {
   const a = document.createElement('a');
-  a.href = URL.createObjectURL(new Blob([actual], { type: 'text/html' }));
+  a.href = URL.createObjectURL(new Blob([juntar()], { type: 'text/html' }));
   a.download = 'mi-pagina.html'; a.click();
 };
-$('copiar').onclick = async () => {
-  const p = $('pedido').value.trim() || 'Una pelota que rebota y cambia de color';
-  try { await navigator.clipboard.writeText(instruccion(p)); $('copiado').textContent = 'Copiada, péguela en su IA'; }
-  catch (e) { $('pegado').value = instruccion(p); $('copiado').textContent = 'Cópiela del cuadro de abajo'; }
-};
-$('ver-pegado').onclick = () => {
-  try { mostrar(sacarHtml($('pegado').value), 'pegado'); $('caja-resultado').scrollIntoView({ behavior: 'smooth' }); }
-  catch (e) { $('copiado').textContent = e.message; }
+$('limpiar').onclick = () => {
+  $('html').value = '<!doctype html>\n<html lang="es">\n<head>\n<meta charset="utf-8">\n<link rel="stylesheet" href="clase.css">\n</head>\n<body>\n  <h1>Hola</h1>\n<script src="clase.js"><' + '/script>\n</body>\n</html>';
+  $('css').value = 'h1 { color: tomato; font-size: 60px; text-align: center; }';
+  $('js').value = '// aqui va lo que hace la pagina\n';
+  ver();
 };
 $('chips').innerHTML = IDEAS.map((t, i) => `<button class="chip" style="background:${COLORES[i % COLORES.length]}">${t}</button>`).join('');
-$('chips').onclick = e => { if (e.target.classList.contains('chip')) { $('pedido').value = e.target.textContent; $('pedido').focus(); } };
+$('chips').onclick = e => { if (e.target.classList.contains('chip')) { $('pedido').value = e.target.textContent; $('instruccion').textContent = instruccion(); } };
 $('ejemplos').innerHTML = EJEMPLOS.map((x, i) => `<button class="ejemplo" data-i="${i}" style="background:${FONDOS[i % FONDOS.length]}">${x.nombre}</button>`).join('');
-$('ejemplos').onclick = e => {
-  const b = e.target.closest('.ejemplo');
-  if (!b) return;
-  const x = EJEMPLOS[+b.dataset.i];
-  $('pedido').value = x.pedido;
-  mostrar(x.html, x.pedido);
-  estado('Ejemplo abierto. Toque Ver el código para cambiarlo.');
-  $('caja-resultado').scrollIntoView({ behavior: 'smooth' });
-};
+$('ejemplos').onclick = e => { const b = e.target.closest('.ejemplo'); if (b) { abrirEjemplo(+b.dataset.i); $('vista').scrollIntoView({ behavior: 'smooth', block: 'center' }); } };
+
+let guardado = null;
+try { guardado = JSON.parse(localStorage.getItem(CLAVE)); } catch (e) {}
+if (guardado && guardado.html) {
+  $('html').value = guardado.html; $('css').value = guardado.css; $('js').value = guardado.js; $('pedido').value = guardado.pedido || '';
+  ver();
+} else abrirEjemplo(0);
+$('instruccion').textContent = instruccion();
 </script>
 </body>
 </html>
